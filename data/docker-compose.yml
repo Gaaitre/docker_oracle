@@ -1,0 +1,14 @@
+version: '2.0'
+services:
+  database:
+    image: sath89/oracle-12c
+    environment:
+      - ORACLE_SID=xe
+      - ORACLE_PDB=test
+    volumes:
+      - ./oracle/oradata:/opt/oracle/oradata # persistent oracle database data.
+      - ./data-bridge:/data-bridge # just to have someplace to put data into the running container if needed
+    ports:
+      - 1521:1521
+      - 8080:8080
+      - 5500:5500
